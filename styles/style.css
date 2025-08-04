@@ -1,5 +1,331 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  background-image: var(--bg-image);
+  background-color: var(--bg-color);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: var(--main-font, sans-serif);
+  font-size: 18px;
+  display: grid;
+  grid-template-columns: 1fr;
+
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+}
+
+.header {
+  min-block-size: 668px;
+  block-size: 100vh;
+  padding: 0 10px;
+  display: grid;
+  grid-column: 1;
+  grid-template-rows: min-content min-content 1fr;
+  position: relative;
+}
+
+.header__title {
+  font-weight: 700;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 83%;
+  color: var(--main-title-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
+  padding-bottom: clamp(3.563rem, 26.718vw - 2.699rem, 10.125rem);
+}
+
+.header__description {
+  max-inline-size: 364px;
+  max-block-size: 117px;
+  justify-self: right;
+  font-weight: 700;
+}
+
+.header__theme-menu {
+  justify-self: right;
+  padding-top: clamp(4.688rem, 26.972vw - 1.634rem, 11.313rem);
+  padding-bottom: clamp(4.063rem, 28.244vw - 2.557rem, 11rem);
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.header__dark_theme_decoration {
+  text-transform: uppercase;
+  color: var(--accent-color);
+  position: absolute;
+  right: 38px;
+  top: 10px;
+}
+
+.header__dark_theme_decoration::after {
+  content: "";
+  position: absolute;
+  inline-size: 9px;
+  block-size: 9px;
+  inset-inline-end: -19px;
+  inset-block-start: 8px;
+  border-radius: 100%;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 4px 2px var(--accent-color);
+}
+
+.header__theme-menu-button {
+  color: var(--header-menu-color);
+  background-color: transparent;
+  border: none;
+  padding: 0 13px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.header__theme-menu-button:not(.header__theme-menu-button_active):hover {
+  outline: 1px solid var(--header-menu-color-hover);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:not(
+    .header__theme-menu-button_active
+  ):focus-visible {
+  border-bottom: 1px solid currentColor;
+}
+
+.header__theme-menu-button_active {
+  outline: 1px solid var(--header-menu-color);
+  pointer-events: none;
+}
+
+.content {
+  grid-column: 1;
+  background-color: var(--bg-color);
+  font-size: 18px;
+  font-weight: normal;
+  padding: 40px 10px;
+}
+
+.content-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 50px;
+  width: 100%;
+  justify-self: left;
+}
+
+.content__paragraph {
+  color: var(--main-font-color);
+  line-height: 130%;
+}
+
+.title-decor {
+  background-color: var(--accent-color);
+  color: var(--accent-font-color);
+}
+
+.content-section-title {
+  color: var(--content-section-title-color);
+  font-weight: 700;
+  line-height: 130%;
+  font-size: inherit;
+  margin-bottom: 20px;
+  grid-column: 1;
+}
+
+.content__text-block:not(:last-child) {
+  margin-bottom: 20px;
+  grid-column: 1;
+}
+
+.content-text-title {
+  font-size: inherit;
+  margin-bottom: 10px;
+}
+
+.content-text-title-list {
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.content-text-title-main-list {
+  font-size: inherit;
+  margin-bottom: 20px;
+}
+.content-image {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.content-image-title {
+  font-size: inherit;
+}
+
+.content-section-images {
+  display: grid;
+  gap: 10px;
+}
+
+.content__paragraph-link {
+  text-decoration: none;
+  text-shadow: 2px 1px var(--accent-color);
+}
+
+.content__paragraph-link:hover {
+  text-decoration: underline;
+}
+
+.content__paragraph-link:focus {
+  outline: none;
+}
+
+.content__paragraph-link:focus-visible {
+  outline: 1px solid currentColor;
+}
+
+.footer {
+  background-color: var(--bg-color);
+  min-block-size: 668px;
+  block-size: 100vh;
+  display: grid;
+  grid-column: 1;
+  position: relative;
+}
+
+.footer__title {
+  font-weight: 700;
+  font-size: clamp(7.25rem, 1.018vw + 7.011rem, 7.5rem);
+  line-height: 83%;
+  color: var(--main-title-color);
+  text-shadow: 4px 4px 0 var(--footer-title-shadow-color);
+  justify-self: center;
+  align-self: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+@media (width >= 768px) {
+  .page {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .header {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    padding-right: 20px;
+  }
+
+  .footer {
+    grid-column: 1 / -1;
+  }
+
+  .header__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .content {
+    grid-column: 1 / -1;
+    padding: 60px 20px;
+  }
+
+  .content-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    margin-bottom: 80px;
+  }
+
+  .content-section-title {
+    grid-column: 1;
+  }
+
+  .content-section_column .content__text-block {
+    grid-column: 2 / 4;
+  }
+
+  .content-section_row .content__text-block {
+    grid-column: 1 / -1;
+  }
+
+  .content-section-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, min-content);
+    gap: 20px;
+  }
+
+  .content-image-title {
+    grid-column: 1 / -1;
+  }
+
+  .content-image-sunset {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+
+  .content-image-ice-cream {
+    grid-column: 3;
+    grid-row: 2 / 4;
+  }
+
+  .content-image-tape {
+    grid-column: 1;
+    grid-row: 3 / -1;
+  }
+
+  .content-image-street {
+    grid-column: 2 / -1;
+    grid-row: 4;
+  }
+
+  .footer__title {
+    font-size: clamp(7.5rem, 14.453vw + 0.563rem, 9.813rem);
+  }
+}
+
+@media (width >= 1024px) {
+  .header__description {
+    max-inline-size: 491px;
+    max-block-size: 70px;
+  }
+
+  .header__title {
+    padding-bottom: 114px;
+  }
+
+  .content-section_row {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    grid-column: 1;
+  }
+
+  .content-section_row .content__text-block {
+    grid-row: 2 / 3;
+    grid-column: auto;
+  }
+
+  .header__theme-menu {
+    grid-row: 1;
+    justify-self: center;
+    padding-top: 20px;
+    padding-bottom: 273px;
+  }
+
+  .header__theme-menu-list {
+    display: flex;
+    flex-direction: row;
+  }
 }

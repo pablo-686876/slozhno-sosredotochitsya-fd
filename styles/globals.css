@@ -39,4 +39,34 @@ a {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  text-shadow: 0 0 4px 0px var(--accent-color);
+  text-decoration: none;
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  display: block;
+  inline-size: 25px;
+  block-size: 25px;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border-top: 1px solid var(--accent-color);
+  border-right: 1px solid var(--accent-color);
+  z-index: 2;
+}
+
+.decorated-zone::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  left: 10px;
+  bottom: 10px;
+  background-color: transparent;
+  border-bottom: 1px solid var(--accent-color);
+  border-left: 1px solid var(--accent-color);
+  z-index: 1;
 }
