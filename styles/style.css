@@ -244,16 +244,17 @@
   .content-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 20px;
     margin-bottom: 80px;
   }
 
   .content-section-title {
     grid-column: 1;
+    margin-right: calc((728px / 3) - 236px);
   }
 
   .content-section_column .content__text-block {
     grid-column: 2 / 4;
+    margin-left: calc(2 * (728px / 3) - 472px);
   }
 
   .content-section_row .content__text-block {
@@ -304,6 +305,14 @@
 
   .header__title {
     padding-bottom: 114px;
+  }
+
+  .content-section-title {
+    margin-right: calc((984px / 3) - 314.96px);
+  }
+
+  .content-section_column .content__text-block {
+    margin-left: calc(2 * (984px / 3) - 648.92px);
   }
 
   .content-section_row {
