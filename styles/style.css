@@ -273,6 +273,7 @@
 
   .content-section_column .content__text-block {
     grid-column: 2 / 4;
+    margin-left: 6.68px;
   }
 
   .content-section_row .content__text-block {
@@ -336,8 +337,8 @@
     grid-column: auto;
   }
 
-  .content-section_row .content__text-block {
-    column-gap: 20px;
+  .content-section_column .content__text-block {
+    margin-left: 0;
   }
 
   .header__theme-menu {
