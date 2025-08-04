@@ -326,6 +326,10 @@
     grid-column: auto;
   }
 
+  .content-section_row .content__text-block:not(:last-of-type) {
+    margin-right: 20px;
+  }
+
   .header__theme-menu {
     grid-row: 1;
     justify-self: center;
