@@ -11,6 +11,9 @@
   font-size: 18px;
   display: grid;
   grid-template-columns: 1fr;
+  width: 100vw;
+  overflow-x: hidden;
+
 }
 
 .header {
