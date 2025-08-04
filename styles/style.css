@@ -7,12 +7,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: var(--main-font, sans-serif);
+  font-family: var(--main-font, "IBM Plex mono"), monospace;
   font-size: 18px;
   display: grid;
   grid-template-columns: 1fr;
-
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
 }
 
 .header {
@@ -36,7 +34,7 @@
 
 .header__description {
   max-inline-size: 364px;
-  max-block-size: 117px;
+  height: fit-content;
   justify-self: right;
   font-weight: 700;
 }
@@ -101,9 +99,36 @@
   pointer-events: none;
 }
 
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  display: block;
+  inline-size: 25px;
+  block-size: 25px;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border-top: 1px solid var(--header-menu-color);
+  border-right: 1px solid var(--header-menu-color);
+  z-index: 2;
+}
+
+.decorated-zone::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  left: 10px;
+  bottom: 10px;
+  background-color: transparent;
+  border-bottom: 1px solid var(--header-menu-color);
+  border-left: 1px solid var(--header-menu-color);
+  z-index: 1;
+}
+
 .content {
   grid-column: 1;
-  background-color: var(--bg-color);
   font-size: 18px;
   font-weight: normal;
   padding: 40px 10px;
@@ -155,6 +180,7 @@
   font-size: inherit;
   margin-bottom: 20px;
 }
+
 .content-image {
   inline-size: 100%;
   block-size: 100%;
@@ -163,9 +189,10 @@
 
 .content-image-title {
   font-size: inherit;
+  margin-bottom: 10px;
 }
 
-.content-section-images {
+.content-images-list {
   display: grid;
   gap: 10px;
 }
@@ -176,7 +203,7 @@
 }
 
 .content__paragraph-link:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid currentColor;
 }
 
 .content__paragraph-link:focus {
@@ -188,7 +215,6 @@
 }
 
 .footer {
-  background-color: var(--bg-color);
   min-block-size: 668px;
   block-size: 100vh;
   display: grid;
@@ -204,6 +230,10 @@
   text-shadow: 4px 4px 0 var(--footer-title-shadow-color);
   justify-self: center;
   align-self: center;
+}
+
+.content__paragraph:not(:last-of-type) {
+  padding-bottom: 10px;
 }
 
 .visually-hidden {
@@ -226,6 +256,7 @@
     right: 20px;
     top: 20px;
   }
+
   .decorated-zone::after {
     left: 20px;
     bottom: 20px;
@@ -271,44 +302,44 @@
     grid-column: 1;
   }
 
-  .content-section_column .content__text-block {
+  .content-section_large-cards .content__text-block {
     grid-column: 2 / 4;
     margin-left: 6.68px;
   }
 
-  .content-section_row .content__text-block {
+  .content-section_little-cards .content__text-block {
     grid-column: 1 / -1;
   }
 
-  .content-section-images {
+  .content-images-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, min-content);
+    grid-template-rows: repeat(3, min-content);
     gap: 20px;
   }
 
   .content-image-title {
-    grid-column: 1 / -1;
+    margin-bottom: 20px;
   }
 
   .content-image-sunset {
     grid-column: 1 / 3;
-    grid-row: 2;
+    grid-row: 1;
   }
 
   .content-image-ice-cream {
     grid-column: 3;
-    grid-row: 2 / 4;
+    grid-row: span 2;
   }
 
   .content-image-tape {
     grid-column: 1;
-    grid-row: 3 / -1;
+    grid-row: 2 / -1;
   }
 
   .content-image-street {
     grid-column: 2 / -1;
-    grid-row: 4;
+    grid-row: 3;
   }
 
   .footer__title {
@@ -319,33 +350,35 @@
 @media (width >= 1024px) {
   .header__description {
     max-inline-size: 491px;
-    max-block-size: 70px;
+    height: fit-content;
   }
 
   .header__title {
     padding-bottom: 114px;
   }
 
-  .content-section_row {
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-    grid-column: 1;
+  .content-section_little-cards {
+    display: grid;
+    grid-auto-flow: row;
   }
 
-  .content-section_row .content__text-block {
-    grid-row: 2 / 3;
+  .content-section_little-cards .content-section-title {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    max-inline-size: 315px;
+  }
+
+  .content-section_little-cards .content__text-block {
     grid-column: auto;
   }
 
-  .content-section_column .content__text-block {
+  .content-section_large-cards .content__text-block {
     margin-left: 0;
   }
 
   .header__theme-menu {
     grid-row: 1;
-    justify-self: center;
-    padding-top: 20px;
-    padding-bottom: 273px;
+    padding: 20px 397px 273px;
   }
 
   .header__theme-menu-list {
